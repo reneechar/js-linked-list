@@ -63,8 +63,20 @@ function linkedListGenerator(){
 
 		},
 
-		insert: function(value, number) {
-			return this.value;
+		insert: function(Value, number) {
+			var insertHere = this.get(number);
+			var previous = this.get(number -1);
+			var newNode = {value: Value, next: null};
+			if (insertHere === false) {
+				return false;
+			} else if (previous === false) {
+				newNode.next = insertHere
+				head = newNode;
+			}
+			else {
+				newNode.next = insertHere;
+				previous.next = newNode;
+			}
 		}
 	};
 };
