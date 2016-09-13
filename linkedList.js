@@ -29,7 +29,18 @@ function linkedListGenerator(){
 		},
 
 		get: function(number) {
-			
+			var pointer = head;
+			var i = 0;
+
+			while(i < number && pointer.next !== null) {
+				pointer = pointer.next;
+				i++;
+			}
+			if (i === number) {
+				return pointer;
+			} else {
+				return false;
+			}
 
 		},
 
