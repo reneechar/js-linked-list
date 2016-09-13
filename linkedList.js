@@ -45,7 +45,22 @@ function linkedListGenerator(){
 		},
 
 		remove: function(number) {
-			return this.value;
+			var toRemove = this.get(number);
+			var previous = this.get(number - 1);
+			if (toRemove === false) {
+				return false;
+			} else if (previous === false) {
+				head = toRemove.next;
+			} else {
+				if (toRemove.next !== null) {
+					previous.next = toRemove.next
+					toRemove = null;
+				} else {
+					previous.next = null;
+					tail = previous;
+				}
+			}
+
 		},
 
 		insert: function(value, number) {
