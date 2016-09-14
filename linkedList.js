@@ -20,11 +20,11 @@ function linkedListGenerator(){
 			var newNode = {value: Value, next: null};
 			if (head === null) {
 				head= newNode;
-				tail = newNode;
 			} else {
 				tail.next = newNode;
-				tail = newNode;
 			}
+			tail = newNode;
+
 			return tail;
 		},
 
@@ -38,10 +38,8 @@ function linkedListGenerator(){
 			}
 			if (i === number) {
 				return pointer;
-			} else {
-				return false;
 			}
-
+			return false;
 		},
 
 		remove: function(number) {
@@ -50,11 +48,15 @@ function linkedListGenerator(){
 			if (toRemove === false) {
 				return false;
 			} else if (previous === false) {
-				head = toRemove.next;
+				if (toRemove.next === null) {
+					head = null;
+					tail = null;
+				} else {
+					head = toRemove.next;
+				}
 			} else {
 				if (toRemove.next !== null) {
 					previous.next = toRemove.next
-					toRemove = null;
 				} else {
 					previous.next = null;
 					tail = previous;
@@ -70,10 +72,11 @@ function linkedListGenerator(){
 			if (insertHere === false) {
 				return false;
 			} else if (previous === false) {
-				newNode.next = insertHere
+				newNode.next = insertHere;
 				head = newNode;
-			}
-			else {
+			} else if (head === null) {
+				add(Value);
+			} else {
 				newNode.next = insertHere;
 				previous.next = newNode;
 			}
